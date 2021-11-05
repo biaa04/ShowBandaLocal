@@ -1,4 +1,9 @@
-package connection;
+package connectiondata;
+
+
+//Falta fazer os métodos adicionar,alterar, remover e a listagem do show 
+
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +20,7 @@ public class ContatoDao {
 	}
 	//Adiciona-Banda
 	public void adiciona(Dados dados) {
-		String sql = "insert into dados " + "(nome,genero)" + " values (?,?)";
+		String sql = "insert into bandas " + "(nome,genero)" + " values (?,?)";
 
 		try {
 
@@ -48,7 +53,7 @@ public class ContatoDao {
 		}
 	}
 	
-	//Listagem-Local-Banda
+	//Listagem-Banda
 	 public List<Dados> getLista() {
 	      try {
 	          List<Dados> dados = new ArrayList<Dados>();
@@ -76,6 +81,34 @@ public class ContatoDao {
 	      }
 	  }
 	 
+	//Listagem-Local
+		 public List<Dados> getListaLocais() {
+		      try {
+		          List<Dados> dados = new ArrayList<Dados>();
+		          PreparedStatement stmt = this.connection.
+		                  prepareStatement("select * from Locais");
+		          ResultSet rs = stmt.executeQuery();
+
+		          while (rs.next()) {
+		              
+		              Dados dado = new Dados();
+		              
+		              dado.setLocalidade(rs.getString("localidade"));
+		              dado.setCapacidade(rs.getLong("capacidade"));
+		              
+
+		             
+		              
+		               dados.add(dado);
+		          }
+		          rs.close();
+		          stmt.close();
+		          return dados;
+		      } catch (SQLException e) {
+		          throw new RuntimeException(e);
+		      }
+		  }
+	 
 	 //Altera-Banda
 	 public void altera(Dados dados) {
 	      String sql = "update contatos set nome=?, genero=?";
@@ -102,7 +135,7 @@ public class ContatoDao {
 		          PreparedStatement stmt = connection
 		                  .prepareStatement(sql);
 		          stmt.setString(1, dados.getLocalidade());
-		          stmt.setString(2, dados.getCapacidade());
+		          stmt.setLong(2, dados.getCapacidade());
 		          
 		          stmt.execute();
 		          stmt.close();

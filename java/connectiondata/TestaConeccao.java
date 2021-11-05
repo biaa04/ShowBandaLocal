@@ -1,10 +1,10 @@
-package connection;
+package connectiondata;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class TestaConeccão {
-	public static void main(String[] args) throws SQLException, ClassNotFoundException  {
+public class TestaConeccao {
+	public static void main(String[] args) throws SQLException {
 		
 		
 			Connection connection = new ConnectionDatabase().getConnection();

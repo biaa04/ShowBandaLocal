@@ -1,4 +1,4 @@
-package connection;
+package connectiondata;
 
 import java.util.Calendar;
 
@@ -31,7 +31,7 @@ public class Dados {
 		return localidade;
 		
 	}
-	public void setLocalidade(String nomeL) {
+	public void setLocalidade(String localidade) {
 		this.localidade = localidade;
 	}
 	
@@ -42,10 +42,10 @@ public class Dados {
 		this.data= data;
 	}
 	
-	public int getCapacidade() {
+	public Long getCapacidade() {
 		return capacidade;
 	}
-	public void setCapacidade(int capacidade) {
+	public void setCapacidade(Long capacidade) {
 		this.capacidade = capacidade;
 	}
 	
