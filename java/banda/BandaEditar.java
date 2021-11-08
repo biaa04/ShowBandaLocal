@@ -1,6 +1,10 @@
 package banda;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +22,7 @@ public class BandaEditar extends HttpServlet{
 	            HttpServletResponse resp)
 	            throws IOException,ServletException
 		{
-	      PrintWriter out = resp getWriter();
+	      PrintWriter out = resp.getWriter();
 	      
 	      String nome = req.getParameter("nome");
 	      String genero = req.getParameter("genero");
@@ -36,4 +40,5 @@ public class BandaEditar extends HttpServlet{
 	      out.println("</html>");
 	      
 		}
+}
 		

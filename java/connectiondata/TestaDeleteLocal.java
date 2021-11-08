@@ -2,17 +2,16 @@ package connectiondata;
 
 import java.sql.SQLException;
 
-
-public class TestaInsere {
+public class TestaDeleteLocal {
 	public static void main(String[]args) throws ClassNotFoundException, SQLException {
 		Dados dados = new Dados();
-		dados.setNome("Avões do Forró");
-		dados.setGenero("Forró");
+		dados.setLocalidade("Arenaa Castelão");
+		//dados.setCapacidade(10);
 		
 		
 		ContatoDao dao = new ContatoDao();
-		dao.adiciona(dados);
-		System.out.println("Gravado!");
+		dao.removeLocal(dados);
+		System.out.println("Deletado!");
 	}
 
 

@@ -1,5 +1,12 @@
 package banda;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+
+
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,13 +17,16 @@ import connectiondata.Dados;
 
 @WebServlet("/formBanda")
 public class Banda extends HttpServlet{
+	private int id;
+
 	
-	protected void service(HttpServletRequest request,
-            HttpServletResponse response)
-            throw IOException,ServletException{
-      PrintWrite out = response getWriter();
-      String nome = request.getParameter("nome");
-      String genero = request.getParameter("genero");
+	protected void service(HttpServletRequest req,
+            HttpServletResponse resp)
+            throws IOException,ServletException{
+      PrintWriter out = resp.getWriter();
+      
+      String nome = req.getParameter("nome");
+      String genero = req.getParameter("genero");
       
       Dados  dados = new Dados();
       dados.setNome(nome);
@@ -24,6 +34,7 @@ public class Banda extends HttpServlet{
       
       ContatoDao dao = new ContatoDao();
       dao.adiciona(dados);
+      
       out.println("<html>");
       out.println("<body>");
       out.println("Banda " + dados.getNome() +
@@ -32,7 +43,7 @@ public class Banda extends HttpServlet{
       out.println("</html>");
       
 	}
-	
+}
 	
 	
 		

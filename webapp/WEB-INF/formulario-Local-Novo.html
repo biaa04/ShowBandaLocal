@@ -5,6 +5,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+ <table>
+    <%
+      ContatoDao dao = new ContatoDao();
+      List<Dados> contatos = dao.getLista();
+
+      for (Dados dado : locais ) {
+    %>
+      <tr>
+        <td><%=dados.getLocalidade() %></td>
+        <td><%=dados.getCapacidade() %></td>
+       
+      </tr>
+    <%
+      }
+    %>
+  </table>
 <form action = "formLocal">
 Localidade = <input type = "text" name="localidade"/>
 Capacidade = <input type = "text" name="capacidade"/>

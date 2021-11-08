@@ -2,7 +2,7 @@ package connectiondata;
 
 import java.sql.SQLException;
 import java.util.List;
-import connectiondata.Dados;
+//import connectiondata.Dados;
 
 public class ListagemBanda {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {

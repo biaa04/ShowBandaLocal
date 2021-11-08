@@ -5,6 +5,22 @@
 <title>Bandas</title>
 </head>
 <body>
+ <table>
+    <%
+      ContatoDao dao = new ContatoDao();
+      List<Dados> contatos = dao.getLista();
+
+      for (Dados dado : bandas ) {
+    %>
+      <tr>
+        <td><%=dados.getNome() %></td>
+        <td><%=dados.getGenero() %></td>
+       
+      </tr>
+    <%
+      }
+    %>
+  </table>
 <form action = "formBanda">
 Nome = <input type = "text" name="nome"/>
 Gênero = <input type = "text" name="genero"/>

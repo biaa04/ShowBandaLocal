@@ -1,6 +1,14 @@
 package local;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+
+
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,15 +17,15 @@ import connectiondata.Dados;
 
 @WebServlet("/formLocalEditar")
 public class LocalEditar {
-	protected void service(HttpServletRequest request,
-            HttpServletResponse response)
-            throw IOException,ServletException{
-      PrintWrite out = response getWriter();
-      String localidade = request.getParameter("localidade");
-      String capacidade = request.getParameter("capacidade");
+	protected void service(HttpServletRequest req,
+            HttpServletResponse resp)
+            throws IOException,ServletException{
+      PrintWriter out = resp.getWriter();
+      String localidade = req.getParameter("localidade");
+      String capacidade = req.getParameter("capacidade");
       
       Dados  dados = new Dados();
-      dados.setNomeL(localidade);
+      dados.setLocalidade(localidade);
       dados.setCapacidade(capacidade);
       
       ContatoDao dao = new ContatoDao();
@@ -30,3 +38,4 @@ public class LocalEditar {
       out.println("</html>");
       
 	}
+}

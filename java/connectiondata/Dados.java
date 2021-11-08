@@ -6,8 +6,9 @@ public class Dados {
 	private String nome;
 	private String genero;
 	private String localidade;
-	private Long capacidade;
+	private String capacidade;
 	private Calendar data; 
+	
 	
 	public String getNome() {
 		return nome;
@@ -42,10 +43,10 @@ public class Dados {
 		this.data= data;
 	}
 	
-	public Long getCapacidade() {
+	public String getCapacidade() {
 		return capacidade;
 	}
-	public void setCapacidade(Long capacidade) {
+	public void setCapacidade(String capacidade) {
 		this.capacidade = capacidade;
 	}
 	

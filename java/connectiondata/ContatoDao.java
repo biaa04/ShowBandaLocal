@@ -37,14 +37,14 @@ public class ContatoDao {
 	}
 	//Adiciona-Local
 	public void adicionaLocal(Dados dados) {
-		String sql = "insert into dados " + "(nomeL,capacidade)" + " values (?,?)";
+		String sql = "insert into locais " + "(localidade,capacidade)" + " values (?,?)";
 
 		try {
 
 			PreparedStatement stmt = connection.prepareStatement(sql);
 
 			stmt.setString(1,dados.getLocalidade());
-			stmt.setLong(2,dados.getCapacidade());
+			stmt.setString(2,dados.getCapacidade());
 
 			stmt.execute();
 			stmt.close();
@@ -58,7 +58,7 @@ public class ContatoDao {
 	      try {
 	          List<Dados> dados = new ArrayList<Dados>();
 	          PreparedStatement stmt = this.connection.
-	                  prepareStatement("select * from Bandas");
+	                  prepareStatement("select * from bandas");
 	          ResultSet rs = stmt.executeQuery();
 
 	          while (rs.next()) {
@@ -86,7 +86,7 @@ public class ContatoDao {
 		      try {
 		          List<Dados> dados = new ArrayList<Dados>();
 		          PreparedStatement stmt = this.connection.
-		                  prepareStatement("select * from Locais");
+		                  prepareStatement("select * from locais");
 		          ResultSet rs = stmt.executeQuery();
 
 		          while (rs.next()) {
@@ -94,7 +94,7 @@ public class ContatoDao {
 		              Dados dado = new Dados();
 		              
 		              dado.setLocalidade(rs.getString("localidade"));
-		              dado.setCapacidade(rs.getLong("capacidade"));
+		              dado.setCapacidade(rs.getString("capacidade"));
 		              
 
 		             
@@ -111,7 +111,7 @@ public class ContatoDao {
 	 
 	 //Altera-Banda
 	 public void altera(Dados dados) {
-	      String sql = "update contatos set nome=?, genero=?";
+	      String sql = "update bandas set nome=?, genero=?";
 	              
 
 	      try {
@@ -128,14 +128,15 @@ public class ContatoDao {
 	  }
 	//Altera-Local
 		 public void alteraLocal(Dados dados) {
-		      String sql = "update contatos set localidade=?, capacidade=?";
+		      String sql = "update  locais set  localidade=? for localidade=?";
 		              
 
 		      try {
 		          PreparedStatement stmt = connection
 		                  .prepareStatement(sql);
 		          stmt.setString(1, dados.getLocalidade());
-		          stmt.setLong(2, dados.getCapacidade());
+		          stmt.setString(2, dados.getCapacidade());
+		        
 		          
 		          stmt.execute();
 		          stmt.close();
@@ -147,7 +148,7 @@ public class ContatoDao {
 	 public void remove(Dados dados) {
 	      try {
 	          PreparedStatement stmt = connection
-	                  .prepareStatement("delete from contatos where nome=?");
+	                  .prepareStatement("delete from bandas where nome=?");
 	          stmt.setString(1, dados.getNome());
 	          stmt.setString(2, dados.getGenero());
 	          stmt.execute();
@@ -161,9 +162,9 @@ public class ContatoDao {
 		 public void removeLocal(Dados dados) {
 		      try {
 		          PreparedStatement stmt = connection
-		                  .prepareStatement("delete from contatos where localidade=?");
+		                  .prepareStatement("delete from locais where localidade=?");
 		          stmt.setString(1, dados.getLocalidade());
-		          stmt.setLong(2, dados.getCapacidade());
+		         // stmt.setInt(2, dados.getCapacidade());
 		          stmt.execute();
 		          stmt.close();
 		      } catch (SQLException e) {
