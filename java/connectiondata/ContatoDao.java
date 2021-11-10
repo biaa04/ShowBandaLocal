@@ -1,7 +1,7 @@
 package connectiondata;
 
 
-//Falta fazer os métodos adicionar,alterar, remover e a listagem do show 
+ 
 
 
 
@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ContatoDao {
@@ -52,7 +53,21 @@ public class ContatoDao {
 			throw new RuntimeException(e);
 		}
 	}
-	
+	//Adiciona-Show
+			public void adicionaShow(Dados dados) {
+				String sql = "insert into shows " + "(data)" + " values (?)";
+
+				try {
+
+					PreparedStatement stmt = connection.prepareStatement(sql);
+
+					stmt.setDate(1, (java.sql.Date) new Date(dados.getData().getTimeInMillis()));
+					stmt.execute();
+					stmt.close();
+				} catch (SQLException e) {
+					throw new RuntimeException(e);
+				}
+			}
 	//Listagem-Banda
 	 public List<Dados> getLista() {
 	      try {

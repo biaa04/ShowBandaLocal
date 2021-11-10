@@ -1,21 +1,17 @@
 package connectiondata;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 
-
-public class TestaInsereBanda {
-	
-	
+public class TestaInsereShow {
 	public static void main(String[]args) throws ClassNotFoundException, SQLException {
 		Dados dados = new Dados();
-		dados.setNome("Calcinha Preta");
-		dados.setGenero("Forró");
+		dados.setData(Calendar.getInstance());
 		
 		
 		ContatoDao dao = new ContatoDao();
-		dao.adiciona(dados);
+		dao.adicionaLocal(dados);
 		System.out.println("Gravado!");
 	}
-
 
 }

@@ -3,8 +3,10 @@ package show;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-
-
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,28 +17,34 @@ import javax.servlet.http.HttpServletResponse;
 import connectiondata.ContatoDao;
 import connectiondata.Dados;
 
-
+@WebServlet("/formShows")
 public class Show {
 	protected void service(HttpServletRequest req,
             HttpServletResponse resp)
             throws IOException,ServletException{
       PrintWriter out = resp.getWriter();
-      String nome = req.getParameter("nome");
-      String genero = req.getParameter("genero");
-      String localidade = req.getParameter("localidade");
-      String capacidade = req.getParameter("capacidade");
-      
+     // String nome = req.getParameter("nome");
+     
       Dados  dados = new Dados();
-      dados.setNome(nome);
-      dados.setGenero(genero);
-      dados.setLocalidade(localidade);
-      dados.setCapacidade(capacidade);
-      
+      //dados.setNome(nome);
+      String dataEmTexto = req.getParameter("data");
+      Calendar data = null;
+
+      // fazendo a conversão da data
+      try {
+          Date date = (Date) new SimpleDateFormat("dd/MM/yyyy")
+                .parse(dataEmTexto);
+          data = Calendar.getInstance();
+          data.setTime(date);
+      } catch (ParseException e) {
+          out.println("Erro de conversão da data");
+          return; //para a execução do método
+      }
       ContatoDao dao = new ContatoDao();
       dao.adiciona(dados);
       out.println("<html>");
       out.println("<body>");
-      out.println("A localidade " + dados.getLocalidade() +
+      out.println("Show " + dados.getData() +
               " adicionada com sucesso");
       out.println("</body>");
       out.println("</html>");

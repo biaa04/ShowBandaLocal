@@ -18,6 +18,7 @@ import connectiondata.Dados;
 
 @WebServlet("/formLocal")
 public class Local {
+	
 	protected void service(HttpServletRequest req,
             HttpServletResponse resp)
             throws IOException,ServletException{

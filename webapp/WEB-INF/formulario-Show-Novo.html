@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+    <%
+      ContatoDao dao = new ContatoDao();
+      List<Dados> contatos = dao.getLista();
+
+      for (Dados dado : shows ) {
+    %>
+      <tr>
+        <td><%=dados.getData() %></td>
+        
+       
+      </tr>
+    <%
+      }
+    %>
+  </table>
+<form action = "formShow">
+Data = <input type = "text" name="data"/>
+
+<input type = "submit" value="Gravar"/>
+</form>>
+
+</body>
+</html>

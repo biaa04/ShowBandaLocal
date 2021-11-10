@@ -18,7 +18,7 @@ import connectiondata.Dados;
 @WebServlet("/formBanda")
 public class Banda extends HttpServlet{
 	private int id;
-
+	
 	
 	protected void service(HttpServletRequest req,
             HttpServletResponse resp)
