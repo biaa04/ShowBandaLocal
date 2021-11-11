@@ -123,7 +123,34 @@ public class ContatoDao {
 		          throw new RuntimeException(e);
 		      }
 		  }
-	 
+		 
+		//Listagem-Local
+		 public List<Dados> getListaLocaisShows() {
+		      try {
+		          List<Dados> dados = new ArrayList<Dados>();
+		          PreparedStatement stmt = this.connection.
+		                  prepareStatement("select * from shows");
+		          ResultSet rs = stmt.executeQuery();
+
+		          while (rs.next()) {
+		              
+		              Dados dado = new Dados();
+		              
+		              dado.setLocalidade(rs.getString("localidade"));
+		              dado.setCapacidade(rs.getString("capacidade"));
+		              
+
+		             
+		              
+		               dados.add(dado);
+		          }
+		          rs.close();
+		          stmt.close();
+		          return dados;
+		      } catch (SQLException e) {
+		          throw new RuntimeException(e);
+		      }
+		  }
 	 //Altera-Banda
 	 public void altera(Dados dados) {
 	      String sql = "update bandas set nome=?, genero=?";

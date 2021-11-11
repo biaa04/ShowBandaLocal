@@ -10,7 +10,7 @@ public class ConnectionDatabase {
 	    	 System.out.println("Conectando ao banco");
 	        try {
 	            return DriverManager.getConnection(
-	          "jdbc:mysql://localhost/musica", "root", "senha");
+	          "jdbc:mysql://localhost/SBL", "root", "senha");
 	        } catch (SQLException e) {
 	            throw new RuntimeException(e);
 	        }
