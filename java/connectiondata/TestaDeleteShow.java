@@ -10,7 +10,7 @@ public class TestaDeleteShow {
 		
 		
 		
-		ContatoDao dao = new ContatoDao();
+		DadosDao dao = new DadosDao();
 		dao.removeLocal(dados);
 		System.out.println("Deletado!");
 

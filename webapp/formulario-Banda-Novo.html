@@ -17,13 +17,13 @@
       List<Dados> bandas = dao.getLista();
 
       for (Dados dados : bandas ) {
-    
+    %>
       <tr>
         <td><%=dados.getNome() %></td>
         <td><%=dados.getGenero() %></td>
        
       </tr>
-    
+     <%
       }
     %>
   </table>

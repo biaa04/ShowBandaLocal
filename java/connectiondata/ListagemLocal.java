@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ListagemLocal {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		ContatoDao dao = new ContatoDao();
+		DadosDao dao = new DadosDao();
 		List<Dados> locais =  dao.getLista();
 	  for(Dados dado : locais) {
 		  System.out.println("Localidade: "+dado.getLocalidade());

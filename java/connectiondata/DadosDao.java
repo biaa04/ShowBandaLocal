@@ -10,13 +10,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class ContatoDao {
+public class DadosDao {
 	private Connection connection;
 	
-	public ContatoDao() {
+	public DadosDao() {
 		this.connection = new ConnectionDatabase().getConnection();
 	}
 	//Adiciona-Banda
@@ -69,7 +70,7 @@ public class ContatoDao {
 				}
 			}
 	//Listagem-Banda
-	 public List<Dados> getLista() {
+	 public List<Dados> getListaBandas() {
 	      try {
 	          List<Dados> dados = new ArrayList<Dados>();
 	          PreparedStatement stmt = this.connection.
@@ -95,7 +96,65 @@ public class ContatoDao {
 	          throw new RuntimeException(e);
 	      }
 	  }
+	//Listagem-BandaShows
+		 public List<Dados> getListaBandasShows() {
+		      try {
+		          List<Dados> dados = new ArrayList<Dados>();
+		          PreparedStatement stmt = this.connection.
+		                  prepareStatement("select * from shows_bandas");
+		          ResultSet rs = stmt.executeQuery();
+
+		          while (rs.next()) {
+		              
+		              Dados dado = new Dados();
+		                     
+		              dado.setNome(rs.getString("nome"));
+		              dado.setGenero(rs.getString("genero"));
+		              Calendar data = Calendar.getInstance();
+						data.setTime(rs.getDate("dataNascimento"));
+						Calendar data1 = Calendar.getInstance();
+						data.setTime(rs.getDate("data"));
+						
+		               dados.add(dado);
+		          }
+		          rs.close();
+		          stmt.close();
+		          return dados;
+		      } catch (SQLException e) {
+		          throw new RuntimeException(e);
+		      }
+		  }
 	 
+		//Listagem-BandaShows-Pesquisa
+		 public List<Dados> pesquisar(String pesquisa) {
+		      try {
+		    	  String consulta = "select id,nome, genero,data" +"* from shows_bandas";
+		    	  PreparedStatement stmt = connection.prepareStatement(consulta);
+		    	  stmt.setString(1,"%"+pesquisa+"%");
+		          List<Dados> dados = new ArrayList<Dados>();
+		        /*  PreparedStatement stmt = this.connection.
+		                  prepareStatement("select * from shows_bandas");*/
+		          ResultSet rs = stmt.executeQuery();
+
+		          while (rs.next()) {
+		              
+		              Dados dado = new Dados();
+		                     
+		              dado.setNome(rs.getString("nome"));
+		              dado.setGenero(rs.getString("genero"));
+		              Calendar data = null;
+					dado.setData(data); 
+		             
+		              
+		               dados.add(dado);
+		          }
+		          rs.close();
+		          stmt.close();
+		          return dados;
+		      } catch (SQLException e) {
+		          throw new RuntimeException(e);
+		      }
+		  }
 	//Listagem-Local
 		 public List<Dados> getListaLocais() {
 		      try {
@@ -124,8 +183,8 @@ public class ContatoDao {
 		      }
 		  }
 		 
-		//Listagem-Local
-		 public List<Dados> getListaLocaisShows() {
+		//Listagem-Shows
+		 public List<Dados> getListaShows() {
 		      try {
 		          List<Dados> dados = new ArrayList<Dados>();
 		          PreparedStatement stmt = this.connection.
@@ -138,6 +197,39 @@ public class ContatoDao {
 		              
 		              dado.setLocalidade(rs.getString("localidade"));
 		              dado.setCapacidade(rs.getString("capacidade"));
+		              Calendar data = null;
+						dado.setData(data); 
+			             
+		              
+
+		             
+		              
+		               dados.add(dado);
+		          }
+		          rs.close();
+		          stmt.close();
+		          return dados;
+		      } catch (SQLException e) {
+		          throw new RuntimeException(e);
+		      }
+		  }
+		//Listagem-Shows-Pesquisa
+		 public List<Dados> pesquisar2(String pesquisa2) {
+		      try {
+		          List<Dados> dados = new ArrayList<Dados>();
+		          PreparedStatement stmt = this.connection.
+		                  prepareStatement("select * from shows");
+		          ResultSet rs = stmt.executeQuery();
+
+		          while (rs.next()) {
+		              
+		              Dados dado = new Dados();
+		              
+		              dado.setLocalidade(rs.getString("localidade"));
+		              dado.setCapacidade(rs.getString("capacidade"));
+		              Calendar data = null;
+						dado.setData(data); 
+			             
 		              
 
 		             

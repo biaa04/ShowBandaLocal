@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ListagemBanda {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		ContatoDao dao = new ContatoDao();
+		DadosDao dao = new DadosDao();
 		List<Dados> bandas =  dao.getLista();
 	  for(Dados dado : bandas) {
 		  System.out.println("Nome: "+dado.getNome());

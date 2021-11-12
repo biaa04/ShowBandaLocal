@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import connectiondata.ContatoDao;
+import connectiondata.DadosDao;
 import connectiondata.Dados;
 
 @WebServlet("/formLocal")
-public class Local {
+public class LocalDAO extends HttpServlet{
 	
 	protected void service(HttpServletRequest req,
             HttpServletResponse resp)
@@ -30,7 +30,7 @@ public class Local {
       dados.setLocalidade(localidade);
       dados.setCapacidade(capacidade);
       
-      ContatoDao dao = new ContatoDao();
+      DadosDao dao = new DadosDao();
       dao.adiciona(dados);
       out.println("<html>");
       out.println("<body>");

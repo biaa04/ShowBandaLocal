@@ -9,7 +9,7 @@ public class TestaInsereShow {
 		dados.setData(Calendar.getInstance());
 		
 		
-		ContatoDao dao = new ContatoDao();
+		DadosDao dao = new DadosDao();
 		dao.adicionaLocal(dados);
 		System.out.println("Gravado!");
 	}

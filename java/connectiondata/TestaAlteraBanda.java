@@ -9,7 +9,7 @@ public class TestaAlteraBanda {
 		dados.setGenero("POP");
 		
 		
-		ContatoDao dao = new ContatoDao();
+		DadosDao dao = new DadosDao();
 		dao.altera(dados);
 		System.out.println("Alterado!");
 	 }

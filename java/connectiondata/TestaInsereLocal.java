@@ -9,7 +9,7 @@ public class TestaInsereLocal {
 		dados.setCapacidade("10000");
 		
 		
-		ContatoDao dao = new ContatoDao();
+		DadosDao dao = new DadosDao();
 		dao.adicionaLocal(dados);
 		System.out.println("Gravado!");
 	}

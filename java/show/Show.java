@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import connectiondata.ContatoDao;
+import connectiondata.DadosDao;
 import connectiondata.Dados;
 
 @WebServlet("/formShows")
@@ -40,7 +40,7 @@ public class Show {
           out.println("Erro de conversão da data");
           return; //para a execução do método
       }
-      ContatoDao dao = new ContatoDao();
+      DadosDao dao = new DadosDao();
       dao.adiciona(dados);
       out.println("<html>");
       out.println("<body>");

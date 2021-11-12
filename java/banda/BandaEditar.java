@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import connectiondata.ContatoDao;
+import connectiondata.DadosDao;
 import connectiondata.Dados;
 
 @WebServlet("/formBandaEditar")
@@ -31,7 +31,7 @@ public class BandaEditar extends HttpServlet{
 	      dados.setNome(nome);
 	      dados.setGenero(genero);
 	      
-	      ContatoDao dao = new ContatoDao();
+	      DadosDao dao = new DadosDao();
 	      dao.adiciona(dados);
 	      out.println("<html>");
 	      out.println("<body>");

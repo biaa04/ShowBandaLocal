@@ -12,7 +12,7 @@ public class TestaAlteraLocal{
 	
 	
 	
-	ContatoDao dao = new ContatoDao();
+	DadosDao dao = new DadosDao();
 	dao.alteraLocal(dados);
 	System.out.println("Alterado!");
  }
